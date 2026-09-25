@@ -1436,12 +1436,26 @@
     /* Hero combat viewport */
     .hero {
       position: relative;
+      isolation: isolate;
+      background: linear-gradient(180deg, #030609 0%, rgba(6, 9, 15, 0.97) 72%, rgba(6, 9, 15, 0.78) 100%);
+      border-bottom-color: rgba(0, 217, 255, 0.16);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
       background:
         linear-gradient(rgba(0, 217, 255, 0.22) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 217, 255, 0.18) 1px, transparent 1px),
-        linear-gradient(180deg, #030609 0%, rgba(6, 9, 15, 0.97) 72%, rgba(6, 9, 15, 0.78) 100%);
-      background-size: 46px 46px, 46px 46px, auto;
-      border-bottom-color: rgba(0, 217, 255, 0.16);
+        linear-gradient(90deg, rgba(0, 217, 255, 0.18) 1px, transparent 1px);
+      background-size: 46px 46px;
+      pointer-events: none;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-viewport {
